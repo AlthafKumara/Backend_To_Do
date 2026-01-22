@@ -11,7 +11,8 @@ router.use(protect);
 const createTodoSchema = joi.object({
   title: joi.string().required(),
   description: joi.string().allow('', null),
-  status: joi.string().valid('pending', 'done').default('pending'),
+  status: joi.string().valid('scheduled', 'pending', 'done').default('scheduled'),
+  start_at: joi.date().iso().allow(null),
   deadline: joi.date().iso().allow(null),
   priority: joi.string().valid('low', 'medium', 'high').default('medium'),
   category_id: joi.number().required(),
@@ -20,7 +21,8 @@ const createTodoSchema = joi.object({
 const updateTodoSchema = joi.object({
   title: joi.string(),
   description: joi.string().allow('', null),
-  status: joi.string().valid('pending', 'done'),
+  status: joi.string().valid('scheduled', 'pending', 'done'),
+  start_at: joi.date().iso().allow(null),
   deadline: joi.date().iso().allow(null),
   priority: joi.string().valid('low', 'medium', 'high'),
   category_id: joi.number(),

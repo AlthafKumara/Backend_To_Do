@@ -158,7 +158,8 @@ Base URL: `http://localhost:3000` (or your Vercel deployment URL)
   {
     "title": "Buy Groceries",       // required, string
     "description": "Milk, Eggs",    // optional, string
-    "status": "pending",            // optional, 'pending' or 'done', default 'pending'
+    "status": "scheduled",          // optional, 'scheduled', 'pending', 'done', default 'scheduled'
+    "start_at": "2023-12-30",       // optional, ISO date string
     "deadline": "2023-12-31",       // optional, ISO date string
     "priority": "medium",           // optional, 'low', 'medium', 'high', default 'medium'
     "category_id": 2                // required, integer (must exist in categories)
@@ -174,7 +175,8 @@ Base URL: `http://localhost:3000` (or your Vercel deployment URL)
       "user_id": "uuid-string",
       "title": "Buy Groceries",
       "description": "Milk, Eggs",
-      "status": "pending",
+      "status": "scheduled",
+      "start_at": "2023-12-30T00:00:00+00:00",
       "deadline": "2023-12-31T00:00:00+00:00",
       "priority": "medium",
       "category_id": 2,
