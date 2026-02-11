@@ -29,8 +29,8 @@ exports.logout = (req, res) => {
 
 exports.updateProfile = async (req, res, next) => {
   try {
-    const { name, password } = req.body;
-    const updatedUser = await authService.updateProfile(req.user.id, name, password);
+    const { name, email, password } = req.body;
+    const updatedUser = await authService.updateProfile(req.user.id, name, email, password);
     sendResponse(res, 200, { user: updatedUser }, 'Profile updated successfully');
   } catch (error) {
     next(error);

@@ -76,9 +76,22 @@ const login = async (email, password) => {
   return { user, token };
 };
 
-const updateProfile = async (userId, name, password) => {
+const updateProfile = async (userId, name, email, password) => {
   const updates = {};
   if (name) updates.name = name;
+  if (email) {
+    const { data: existingUser } = await supabase
+      .from('users')
+      .select('id')
+      .eq('email', email)
+      .neq('id', userId)
+      .single();
+
+    if (existingUser) {
+      throw new AppError('Email is already in use', 400);
+    }
+    updates.email = email;
+  }
   if (password) {
     updates.password = await bcrypt.hash(password, 12);
   }

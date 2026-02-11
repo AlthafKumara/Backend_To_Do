@@ -92,6 +92,7 @@ Base URL: `http://localhost:3000` (or your Vercel deployment URL)
   ```json
   {
     "name": "John Updated",   // optional
+    "email": "[EMAIL_ADDRESS]", // optional, valid email
     "password": "newpassword" // optional, min 6 chars
   }
   ```
